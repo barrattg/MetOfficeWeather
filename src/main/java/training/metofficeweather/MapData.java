@@ -10,6 +10,22 @@ public class MapData {
     private String region;
     private String unitaryAuthArea;
     private String obsSource;
+    private String nationalPark;
+
+    @Override
+    public String toString() {
+        return "MapData{" +
+                "elevation='" + elevation + '\'' +
+                ", id='" + id + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", name='" + name + '\'' +
+                ", region='" + region + '\'' +
+                ", unitaryAuthArea='" + unitaryAuthArea + '\'' +
+                ", obsSource='" + obsSource + '\'' +
+                ", nationalPark='" + nationalPark + '\'' +
+                '}';
+    }
 
     public String getElevation() {
         return elevation;
@@ -75,17 +91,11 @@ public class MapData {
         this.obsSource = obsSource;
     }
 
-    @Override
-    public String toString() {
-        return "MapData{" +
-                "elevation='" + elevation + '\'' +
-                ", id='" + id + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", name='" + name + '\'' +
-                ", region='" + region + '\'' +
-                ", unitaryAuthArea='" + unitaryAuthArea + '\'' +
-                ", obsSource='" + obsSource + '\'' +
-                '}';
+    public String getNationalPark() {
+        return nationalPark;
+    }
+
+    public void setNationalPark(String nationalPark) {
+        this.nationalPark = nationalPark;
     }
 }

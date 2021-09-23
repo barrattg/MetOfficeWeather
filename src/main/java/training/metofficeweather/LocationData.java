@@ -14,4 +14,7 @@ public class LocationData {
                 '}';
     }
 
+    public LocationList getData() {
+        return data;
+    }
 }
