@@ -8,11 +8,13 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.xml.stream.Location;
 import java.util.*;
-import java.util.stream.Stream;
+
+import static training.metofficeweather.Greetings.greeter;
+
 public class Main {
     public static void main(String args[]) throws JsonProcessingException {
         Client client = ClientBuilder.newClient();
-        String data = client.target("http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/sitelist?key=52452172-a037-42d6-8d10-07c179cccb42")
+        String data = client.target("http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/sitelist?key=24ceaf9c-d558-4ba9-bf12-43700fdd319c")
                 .request(MediaType.TEXT_PLAIN)
                 .get(String.class);
 
@@ -28,17 +30,19 @@ public class Main {
             //location -> System.out.println(location)
             //);
 
-
         }
+
         Collections.sort(str);
 
         System.out.println(str);
+
+        // greeter();
 
     }
 
     //todo 1. Reads the locations from the site list and prints a list of locations for the user to choose from.
 
     //todo 2. Asks the user to input the location name they're interested in.
-    //Scanner scan = new Scanner ();
+
     }
 
