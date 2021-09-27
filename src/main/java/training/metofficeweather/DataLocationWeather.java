@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DataLocationWeather {
     String name;
     @JsonProperty("Period")
-    ArrayList<Period> periods;
+    private ArrayList<Period> periods;
 
     @Override
     public String toString() {
@@ -26,4 +26,6 @@ public class DataLocationWeather {
     public ArrayList<Period> getPeriods() {
         return periods;
     }
+
+
 }

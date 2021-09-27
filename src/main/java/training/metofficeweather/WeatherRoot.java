@@ -3,26 +3,22 @@ package training.metofficeweather;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
-import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-    public class SiteRep {
-        @JsonProperty("DV")
-        public DataValue dataValues;
+public class WeatherRoot {
+    @JsonProperty("SiteRep")
+    public SiteRep siteRep;
+
+
+    public SiteRep getSiteRep() {
+        return siteRep;
+    }
 
     @Override
     public String toString() {
-        return "SiteRep{" +
-                "dataValues=" + dataValues +
+        return "WeatherRoot{" +
+                "siteRep=" + siteRep +
                 '}';
     }
 
-    public DataValue getDataValues() {
-        return dataValues;
-    }
 }
-
-
-
-

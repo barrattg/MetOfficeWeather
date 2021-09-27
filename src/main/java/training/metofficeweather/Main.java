@@ -18,6 +18,7 @@ public class Main {
                 .request(MediaType.TEXT_PLAIN)
                 .get(String.class);
     //the above is client for location data
+
         Client weatherClient = ClientBuilder.newClient();
         String weatherApp = weatherClient .target("http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/310042?res=3hourly&key=52452172-a037-42d6-8d10-07c179cccb42")
                 .request(MediaType.TEXT_PLAIN)
@@ -36,14 +37,15 @@ public class Main {
         }
 
 
-       SiteRep dataValue = objectMapper.readValue(weatherApp, SiteRep.class);
-
+        WeatherRoot weatherRoot = objectMapper.readValue(weatherApp ,WeatherRoot.class);
+        System.out.println("WeatherRoot: " + weatherRoot);
         ArrayList<String> str2 = new ArrayList<String>();
-        str2.add(dataValue.getDataValues().getDataLocationWeathers().getPeriods().getRepresentations().getDailyData());
 
+        System.out.println(weatherRoot.getSiteRep().getDataValues().getLocation().getPeriods().get(0));
+        str2.add(weatherRoot.getSiteRep().getDataValues().getLocation().getPeriods().get(0).getRepresentations().toString());
         System.out.println(str2);
 
-         greeter();
+        //greeter();
 
 
 
