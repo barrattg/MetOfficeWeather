@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Home page</title>
+</head>
+<body>
+<div layout:fragment="content" class="container body-content">
+    <div class="jumbotron">
+        <h1>Met Office Weather</h1>
+        <p class="lead">For all your weather needs. Enter a location id below and click enter to see the weather forecast for that location.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="messageForm" th:action="@{/weatherInfo}" method="get">
+                <fieldset>
+                    <legend>Location ID: </legend>
+                    <input type="text" name="locationId">
+                    <input type="submit" value="Get Weather Info" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
