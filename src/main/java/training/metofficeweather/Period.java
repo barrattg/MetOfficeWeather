@@ -24,4 +24,13 @@ public class Period {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return "Period{" +
+                "representations=" + representations +
+                ", type='" + type + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

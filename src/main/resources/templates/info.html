@@ -12,7 +12,19 @@
         <div layout:fragment="content" class="container body-content">
             <h2>Weather Information</h2>
             <div>
-                <p>You entered location id <span th:text="${weatherInfo.locationId}"></span></p>
+                <!-- <p>You entered location id <span th:text="${weatherInfo}"></span></p> -->
+                <p><span th:text="${weatherInfo.siteRep.dataValues.location.name}"></span></p>
+                <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}"></span></p>
+                <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].feelsLikeTemp}"></span> Degrees</p>
+                <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}">mph</span></p>
+                <p>Relative Humidity: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].relativeHumidity}"></span></p>
+                <p>Precipitation Probability: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].precipitationProbability}"></span>%</p>
+                <p>Wind Speed: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windSpeed}"></span>mph</p>
+                <p>Temperature: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].temperature}"></span></p>
+                <p>Visibility: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].visibility}"></span></p>
+                <p>Weather: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].weather}"></span></p>
+                <p>Ultraviolet: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].ultraviolet}"></span></p>
+                <p>Minutes after Midnight: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].minutesAfterMidnight}"></span></p>
             </div>
         </div>
     </body>
