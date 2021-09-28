@@ -22,14 +22,19 @@
                     <input type="submit" value="Get Weather Info" />
 
 
-                    <input list="place-names" placeholder="Start typing...">
-                    <datalist id="place-names">
+                    <!--<input list="place-names" placeholder="Start typing...">
+                    -->
+                    <form action="/weatherForLocation" method="post">
+
                         <select name = "location" id = "location-selection">
-                            <th:block th:each="i : ${locations}">
-                            <option th:value="${i}" >
-                            </option>
+                            <th:block th:each="location : ${locations}">
+                            <option th:text="${location}"/>
+
                             </th:block>
+
+                            <input type="submit" value="Submit" >
                         </select>
+                    </form>
 
                         <!--<option>Uckfield</option>
                         <option>Blackpool</option>
