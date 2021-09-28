@@ -24,9 +24,17 @@
 
                     <input list="place-names" placeholder="Start typing...">
                     <datalist id="place-names">
-                        <option>Uckfield</option>
+                        <select name = "location" id = "location-selection">
+                            <th:block th:each="i : ${locations}">
+                            <option th:value="${i}" >
+                            </option>
+                            </th:block>
+                        </select>
+
+                        <!--<option>Uckfield</option>
                         <option>Blackpool</option>
                         <option>Eastbourne</option>
+                        -->
                     </datalist>
                 </fieldset>
             </form>
