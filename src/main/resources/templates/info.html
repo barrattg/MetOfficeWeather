@@ -14,6 +14,9 @@
             <div>
                 <!-- <p>You entered location id <span th:text="${weatherInfo}"></span></p> -->
                 <p><span th:text="${weatherInfo.siteRep.dataValues.location.name}"></span></p>
+                <p><span th:text="${weatherInfo.siteRep.dataValues.location.id}"></span></p>
+                <p><span th:text="${weatherInfo.siteRep.dataValues.location.lat}"></span></p>
+                <p><span th:text="${weatherInfo.siteRep.dataValues.location.lon}"></span></p>
                 <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}"></span></p>
                 <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].feelsLikeTemp}"></span> Degrees</p>
                 <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}">mph</span></p>

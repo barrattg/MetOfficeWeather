@@ -29,30 +29,33 @@ public class Main {
         LocationData locations = objectMapper.readValue(data, LocationData.class);
         ArrayList<String> str = new ArrayList<String>();
 
-        for (int i = 0; i < 6002; i++) {
+        // TODO fix range param
+        for (int i = 0; i < 6002 ; i++) {
             str.add(locations.getData().getMapData().get(i).getName());
 
 
 
         }
 
-
-        WeatherRoot weatherRoot = objectMapper.readValue(weatherApp ,WeatherRoot.class);
-        System.out.println("WeatherRoot: " + weatherRoot);
+        // TODO pull this out into new class to separate?
+        /* WeatherRoot weatherRoot = objectMapper.readValue(weatherApp ,WeatherRoot.class);
+        //System.out.println("WeatherRoot: " + weatherRoot);
         ArrayList<String> str2 = new ArrayList<String>();
 
-        System.out.println(weatherRoot.getSiteRep().getDataValues().getLocation().getPeriods().get(0));
+        //System.out.println(weatherRoot.getSiteRep().getDataValues().getLocation().getPeriods().get(0));
         str2.add(weatherRoot.getSiteRep().getDataValues().getLocation().getPeriods().get(0).getRepresentations().toString());
         System.out.println(str2);
-
+        // TODO reimplement greeter
         //greeter();
+
+         */
 
 
 
         //todo 1. Reads the locations from the site list and prints a list of locations for the user to choose from.
 
         //todo 2. Asks the user to input the location name they're interested in.
-        //we need 2nd web address and use input to change the id code in weblink
+
 
     }
 }

@@ -1,10 +1,16 @@
 package training.metofficeweather;
 
+import com.fasterxml.jackson.annotation.JacksonAnnotation;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MapData {
 
     private String elevation;
+    @JsonProperty("i")
     private String id;
+    @JsonProperty("lat")
     private String latitude;
+    @JsonProperty("lon")
     private String longitude;
     private String name;
     private String region;
