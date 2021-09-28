@@ -16,16 +16,16 @@
         <div class="col-md-12">
             <form id="messageForm" action="/weatherForLocation" method="post" >
                 <fieldset>
-                    <legend>Location ID: </legend>
+                    <legend>Location</legend>
 
-                    <input type="text" name="locationId">
+                    <!--<input type="text" name="locationId">
                     <input type="submit" value="Get Weather Info" />
 
 
-                    <!--<input list="place-names" placeholder="Start typing...">
+                    <input list="place-names" placeholder="Start typing...">
                     -->
 
-                    <p th:text="${dname}" />
+
 
                         <select name = "location" id = "location-selection">
                             <th:block th:each="location : ${locations}">

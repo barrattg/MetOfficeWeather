@@ -13,7 +13,6 @@ import org.springframework.http.MediaType;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -24,8 +23,10 @@ public class WeatherController {
 
     @RequestMapping("/") // page for user to enter place ID
     String home(Model myModel) {
-        String [] fakeLocations = {"Cambridge", "London", "Bath"};
-        myModel.addAttribute("locations", fakeLocations);
+
+        String [] Locations = {"Cambridge", "London", "Bath"};
+        LocationGetter locationGetter = new LocationGetter();
+        myModel.addAttribute("locations", locationGetter.getLocation());
         //myModel.addAttribute("dname", "Dave");
         return "index";
     }
