@@ -22,11 +22,12 @@ public class WeatherController {
 
 
 
-    @RequestMapping("/weather") // page for user to enter place ID
+    @RequestMapping("/") // page for user to enter place ID
     String home(Model myModel) {
         String [] fakeLocations = {"Cambridge", "London", "Bath"};
         myModel.addAttribute("locations", fakeLocations);
-        return "hello";
+        //myModel.addAttribute("dname", "Dave");
+        return "index";
     }
 
     @RequestMapping(

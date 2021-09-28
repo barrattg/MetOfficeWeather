@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form id="messageForm" th:action="@{/weatherInfo}" method="get">
+            <form id="messageForm" action="/weatherForLocation" method="post" >
                 <fieldset>
                     <legend>Location ID: </legend>
 
@@ -24,7 +24,8 @@
 
                     <!--<input list="place-names" placeholder="Start typing...">
                     -->
-                    <form action="/weatherForLocation" method="post">
+
+                    <p th:text="${dname}" />
 
                         <select name = "location" id = "location-selection">
                             <th:block th:each="location : ${locations}">
@@ -34,7 +35,7 @@
 
                             <input type="submit" value="Submit" >
                         </select>
-                    </form>
+
 
                         <!--<option>Uckfield</option>
                         <option>Blackpool</option>
