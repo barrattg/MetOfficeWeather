@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <title>Home page</title>
 </head>
 <body>
@@ -16,8 +17,17 @@
             <form id="messageForm" th:action="@{/weatherInfo}" method="get">
                 <fieldset>
                     <legend>Location ID: </legend>
+
                     <input type="text" name="locationId">
                     <input type="submit" value="Get Weather Info" />
+
+
+                    <input list="place-names" placeholder="Start typing...">
+                    <datalist id="place-names">
+                        <option>Uckfield</option>
+                        <option>Blackpool</option>
+                        <option>Eastbourne</option>
+                    </datalist>
                 </fieldset>
             </form>
         </div>
