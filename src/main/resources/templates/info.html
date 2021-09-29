@@ -6,32 +6,178 @@
     <!--@thymesVar id="weatherInfo" type="training.metofficeweather.web.WeatherInfo"-->
 
     <head>
-        <link rel="stylesheet" href="styles.css">
         <title>Weather Information</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: #262628;
+        }
+
+        h1 {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        h2 {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        a {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 20%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #10AEA9;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        .sidenav p {
+            color: white;
+        }
+
+        .sidenav a {
+            color: white;
+        }
+
+        .content {
+            height: 100%;
+            position: fixed;
+            width: 80%;
+            top: 0;
+            bottom: 0;
+            background-color: #FDCE8E;
+            margin-left: 20%;
+            padding-left: 20px;
+        }
+
+        .segment-1 {
+            width: 20%;
+            float: left;
+        }
+
+        .segment-2 {
+            width: 20%;
+            float: left;
+        }
+
+        .segment-3 {
+            width: 20%;
+            float: left;
+        }
+
+        .segment-4 {
+            width: 20%;
+            float: left;
+        }
+
+        .segment-5 {
+            width: 20%;
+            float: left;
+        }
+    </style>
+
     <body>
         <div layout:fragment="content" class="container body-content">
-            <h2>Weather Information</h2>
-            <div>
 
-                <a href="http://localhost:8080/">Select a different location</a>)
-                <!-- <p>You entered location id <span th:text="${weatherInfo}"></span></p> -->
+            <div class="sidenav">
                 <p><span th:text="${weatherInfo.siteRep.dataValues.location.name}"></span></p>
-                <p><span th:text="${weatherInfo.siteRep.dataValues.location.id}"></span></p>
-                <p><span th:text="${weatherInfo.siteRep.dataValues.location.lat}"></span></p>
-                <p><span th:text="${weatherInfo.siteRep.dataValues.location.lon}"></span></p>
-                <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}"></span></p>
-                <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].feelsLikeTemp}"></span> Degrees</p>
-                <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}">mph</span></p>
-                <p>Relative Humidity: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].relativeHumidity}"></span></p>
-                <p>Precipitation Probability: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].precipitationProbability}"></span>%</p>
-                <p>Wind Speed: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windSpeed}"></span>mph</p>
-                <p>Temperature: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].temperature}"></span></p>
-                <p>Visibility: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].visibility}"></span></p>
-                <p>Weather: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].weather}"></span></p>
-                <p>Ultraviolet: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].ultraviolet}"></span></p>
-                <p>Minutes after Midnight: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].minutesAfterMidnight}"></span></p>
+                <p>Location ID: <span th:text="${weatherInfo.siteRep.dataValues.location.id}"></span></p>
+                <p>Latitude: <span th:text="${weatherInfo.siteRep.dataValues.location.lat}"></span></p>
+                <p>Longitude: <span th:text="${weatherInfo.siteRep.dataValues.location.lon}"></span></p>
+                <a href="http://localhost:8080/">Select a different location</a>
             </div>
+
+            <div class="content">
+                <h1>Weather Information</h1>
+
+                <div class="segment-1">
+                    <h2><span th:text="(${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].minutesAfterMidnight})/60"> </span>:00 </h2>
+                    <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}"></span></p>
+                    <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].feelsLikeTemp}"></span>°C</p>
+                    <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windDirection}">mph</span></p>
+                    <p>Relative Humidity: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].relativeHumidity}"></span></p>
+                    <p>Rain Chance: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].precipitationProbability}"></span>%</p>
+                    <p>Wind Speed: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].windSpeed}"></span>mph</p>
+                    <p>Temperature: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].temperature}"></span>°C</p>
+                    <p>Visibility: <span th:text="${weatherInfo.getVisibilityValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[0].visibility)}"></span></p>
+                    <p>Weather: <span th:text="${weatherInfo.getWeatherValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[0].weather)}"></span></p>
+                    <p>Ultraviolet: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[0].ultraviolet}"></span></p>
+                </div>
+
+                <div class="segment-2">
+                    <h2><span th:text="(${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].minutesAfterMidnight})/60"> </span>:00 </h2>
+                    <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].windDirection}"></span></p>
+                    <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].feelsLikeTemp}"></span>°C</p>
+                    <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].windDirection}">mph</span></p>
+                    <p>Relative Humidity: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].relativeHumidity}"></span></p>
+                    <p>Rain Chance: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].precipitationProbability}"></span>%</p>
+                    <p>Wind Speed: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].windSpeed}"></span>mph</p>
+                    <p>Temperature: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].temperature}"></span>°C</p>
+                    <p>Visibility: <span th:text="${weatherInfo.getVisibilityValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[1].visibility)}"></span></p>
+                    <p>Weather: <span th:text="${weatherInfo.getWeatherValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[1].weather)}"></span></p>
+                    <p>Ultraviolet: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[1].ultraviolet}"></span></p>
+                </div>
+
+                <div class="segment-3">
+                    <h2><span th:text="(${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].minutesAfterMidnight})/60"> </span>:00 </h2>
+                    <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].windDirection}"></span></p>
+                    <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].feelsLikeTemp}"></span>°C</p>
+                    <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].windDirection}">mph</span></p>
+                    <p>Relative Humidity: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].relativeHumidity}"></span></p>
+                    <p>Rain Chance: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].precipitationProbability}"></span>%</p>
+                    <p>Wind Speed: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].windSpeed}"></span>mph</p>
+                    <p>Temperature: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].temperature}"></span>°C</p>
+                    <p>Visibility: <span th:text="${weatherInfo.getVisibilityValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[2].visibility)}"></span></p>
+                    <p>Weather: <span th:text="${weatherInfo.getWeatherValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[2].weather)}"></span></p>
+                    <p>Ultraviolet: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[2].ultraviolet}"></span></p>
+                </div>
+
+                <div class="segment-4">
+                    <h2><span th:text="(${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].minutesAfterMidnight})/60"> </span>:00 </h2>
+                    <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].windDirection}"></span></p>
+                    <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].feelsLikeTemp}"></span>°C</p>
+                    <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].windDirection}">mph</span></p>
+                    <p>Relative Humidity: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].relativeHumidity}"></span></p>
+                    <p>Rain Chance: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].precipitationProbability}"></span>%</p>
+                    <p>Wind Speed: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].windSpeed}"></span>mph</p>
+                    <p>Temperature: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].temperature}"></span>°C</p>
+                    <p>Visibility: <span th:text="${weatherInfo.getVisibilityValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[3].visibility)}"></span></p>
+                    <p>Weather: <span th:text="${weatherInfo.getWeatherValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[3].weather)}"></span></p>
+                    <p>Ultraviolet: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[3].ultraviolet}"></span></p>
+                </div>
+
+                <div class="segment-5">
+                    <h2><span th:text="(${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].minutesAfterMidnight})/60"> </span>:00 </h2>
+                    <p>Wind Direction: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].windDirection}"></span></p>
+                    <p>Feels Like: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].feelsLikeTemp}"></span>°C</p>
+                    <p>Wind Gust: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].windDirection}">mph</span></p>
+                    <p>Relative Humidity: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].relativeHumidity}"></span></p>
+                    <p>Rain Chance: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].precipitationProbability}"></span>%</p>
+                    <p>Wind Speed: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].windSpeed}"></span>mph</p>
+                    <p>Temperature: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].temperature}"></span>°C</p>
+                    <p>Visibility: <span th:text="${weatherInfo.getVisibilityValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[4].visibility)}"></span></p>
+                    <p>Weather: <span th:text="${weatherInfo.getWeatherValue().get(weatherInfo.siteRep.dataValues.location.periods[0].representations[4].weather)}"></span></p>
+                    <p>Ultraviolet: <span th:text="${weatherInfo.siteRep.dataValues.location.periods[0].representations[4].ultraviolet}"></span></p>
+                </div>
         </div>
     </body>
 </html>

@@ -3,9 +3,31 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout">
 <head>
-    <link rel="stylesheet" href="styles.css">
     <title>Home page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    body {
+        background-image: url("https://images.unsplash.com/photo-1566995589099-45de344a6dbe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3655&q=80");
+    }
+
+    h1 {
+        font-family: 'Nunito', sans-serif;
+    }
+
+    p {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .row {
+        font-family: 'Open Sans', sans-serif;
+    }
+</style>
+
 <body>
 <div layout:fragment="content" class="container body-content">
     <div class="jumbotron">
