@@ -12,7 +12,7 @@ import java.sql.Array;
 import java.util.ArrayList;
 
 public class LocationGetter {
-    public ArrayList<String> getLocation(){
+    public Location[] getLocation(){
 
 
         Client client = ClientBuilder.newClient();
@@ -30,17 +30,13 @@ public class LocationGetter {
             e.printStackTrace();
         }
 
-        ArrayList<String> str = new ArrayList<String>();
-
-        for (Location location: locations.getLocations().getLocations()) {
-
-            str.add(location.getName());
 
 
-        }
-        //System.out.println(str);
+        return  locations.getLocations().getLocations();
 
-        return str;
+
+
+
 
 
     }

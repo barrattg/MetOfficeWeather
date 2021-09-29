@@ -10,11 +10,12 @@
 <div layout:fragment="content" class="container body-content">
     <div class="jumbotron">
         <h1>Met Office Weather</h1>
-        <p class="lead">For all your weather needs. Enter a location id below and click enter to see the weather forecast for that location.</p>
+        <p class="lead">For all your weather needs. Enter a location below and click enter to see the weather forecast for that location.</p>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form id="messageForm" action="/weatherForLocation" method="post" >
+            <form id="messageForm" action="/weatherInfo" method="post" >
+
                 <fieldset>
                     <legend>Location</legend>
 
@@ -27,9 +28,11 @@
 
 
 
-                        <select name = "location" id = "location-selection">
-                            <th:block th:each="location : ${locations}">
-                            <option th:text="${location}"/>
+                        <select name = "location" id = "location-selection" >
+                            <th:block th:each="location : ${locations}" >
+
+                            <option th:value = "${location.id}" th:text="${location.name}"  />
+
 
                             </th:block>
 

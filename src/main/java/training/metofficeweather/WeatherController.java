@@ -21,13 +21,13 @@ public class WeatherController {
 
 
 
-    @RequestMapping("/") // page for user to enter place ID
+    @RequestMapping("") // page for user to enter place ID
     String home(Model myModel) {
 
-        String [] Locations = {"Cambridge", "London", "Bath"};
+        //String [] Locations = {"Cambridge", "London", "Bath"};
         LocationGetter locationGetter = new LocationGetter();
         myModel.addAttribute("locations", locationGetter.getLocation());
-        //myModel.addAttribute("dname", "Dave");
+
         return "index";
     }
 
@@ -42,7 +42,8 @@ public class WeatherController {
     }
 
     @RequestMapping("/weatherInfo") // page for putting result data from place ID
-    ModelAndView weatherInfo(@RequestParam("locationId") String locationId) {
+    ModelAndView weatherInfo(@RequestParam("location") String locationId) {
+        System.out.println("locationId" + locationId);
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
@@ -61,9 +62,3 @@ public class WeatherController {
     }
 }
 
-/*
-HashMap<String, String> weatherHashMap = new HashMap<String, String>() {
-    put(
-}
-
- */
